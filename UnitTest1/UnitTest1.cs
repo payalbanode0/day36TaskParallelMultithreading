@@ -1,8 +1,7 @@
-using Day36TaskParallelMultithreading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using Day36TaskParallelMultithreading;
+using Day36TaskParallelMultithreading
 
 namespace TestProject1
 {
@@ -31,12 +30,6 @@ namespace TestProject1
             employeePayrollOperations.addEmployeeToPayroll(employeeDetails);
             DateTime stopDateTime = DateTime.Now;
             Console.WriteLine("Duration without thread: " + (stopDateTime - startDateTime));
-
-            //UC2
-            DateTime startDateTimeThread = DateTime.Now;
-            employeePayrollOperations.addEmployeeToPayrollWithThread(employeeDetails);
-            DateTime stopDateTimeThread = DateTime.Now;
-            Console.WriteLine("Duration with thread: " + (stopDateTimeThread - startDateTimeThread));
 
         }
     }
