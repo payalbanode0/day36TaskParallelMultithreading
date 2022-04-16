@@ -9,9 +9,10 @@ namespace Day36TaskParallelMultithreading
 {
     public class EnployeePayrollOperations
     {
-        public List<EmployeeDetails> employeePolyeeDetailList = new List<EmployeeDetails>();
+        public List<EmployeeDetails> employeePayDetailList = new List<EmployeeDetails>();
 
-        //UC 1
+
+        //UC 1,3
         public void addEmployeeToPayroll(List<EmployeeDetails> employeePayrollDataList)
         {
             employeePayrollDataList.ForEach(employeeData =>
@@ -23,9 +24,9 @@ namespace Day36TaskParallelMultithreading
                 Time.Stop();
                 Console.WriteLine("Employee added : " + employeeData.EmployeeName + " ( Duration  : " + Time.Elapsed + ")");
             });
-            Console.WriteLine(this.employeePolyeeDetailList.ToString());
+            Console.WriteLine(this.employeePayDetailList.ToString());
         }
-        //UC 2
+        //UC 2,3
         public void addEmployeeToPayrollWithThread(List<EmployeeDetails> employeePayrollDataList)
         {
             employeePayrollDataList.ForEach(employeeData =>
@@ -42,12 +43,11 @@ namespace Day36TaskParallelMultithreading
                 });
                 thread.Start();
             });
-            Console.WriteLine(this.employeePolyeeDetailList.Count);
+            Console.WriteLine(this.employeePayDetailList.Count);
         }
         public void addEmployeeToPayroll(EmployeeDetails emp)
         {
-            employeePolyeeDetailList.Add(emp);
-
+            employeePayDetailList.Add(emp);
 
         }
 
