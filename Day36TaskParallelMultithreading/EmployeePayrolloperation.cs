@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +16,12 @@ namespace Day36TaskParallelMultithreading
         {
             employeePayrollDataList.ForEach(employeeData =>
             {
-                Console.WriteLine("Employee Being Added :" + employeeData.EmployeeName);
+                Stopwatch Time = new Stopwatch();
+                Time.Start();
+                Console.WriteLine("Employee Being Added  :" + employeeData.EmployeeName);
                 this.addEmployeeToPayroll(employeeData);
-                Console.WriteLine("Employee added : " + employeeData.EmployeeName);
+                Time.Stop();
+                Console.WriteLine("Employee added : " + employeeData.EmployeeName + " ( Duration  : " + Time.Elapsed + ")");
             });
             Console.WriteLine(this.employeePolyeeDetailList.ToString());
         }
@@ -28,10 +32,13 @@ namespace Day36TaskParallelMultithreading
             {
                 Task thread = new Task(() =>
                 {
+                    Stopwatch Time = new Stopwatch();
+                    Time.Start();
 
                     Console.WriteLine("Employee Being Added :" + employeeData.EmployeeName);
                     this.addEmployeeToPayroll(employeeData);
-                    Console.WriteLine("Employee added : " + employeeData.EmployeeName);
+                    Time.Stop();
+                    Console.WriteLine("Employee added : " + employeeData.EmployeeName + " ( Duration : " + Time.Elapsed + ")");
                 });
                 thread.Start();
             });
@@ -40,6 +47,8 @@ namespace Day36TaskParallelMultithreading
         public void addEmployeeToPayroll(EmployeeDetails emp)
         {
             employeePolyeeDetailList.Add(emp);
+
+
         }
 
 
