@@ -24,12 +24,18 @@ namespace TestProject1
             employeeDetails.Add(new EmployeeDetails(EmployeeID: 9, EmployeeName: "Bruce", PhoneNumber: "9999999999", Address: "XYZ", Department: "Production", Gender: 'M', BasicPay: 100000, Deductions: 1000, TaxablePay: 20, Tax: 100, NetPay: 90000, startDate: new System.DateTime(2021, 08, 23), City: "Varanasi", Country: "India"));
             employeeDetails.Add(new EmployeeDetails(EmployeeID: 10, EmployeeName: "Banner", PhoneNumber: "9999999999", Address: "XYZ", Department: "HR", Gender: 'M', BasicPay: 100000, Deductions: 1000, TaxablePay: 20, Tax: 100, NetPay: 90000, startDate: new System.DateTime(2022, 02, 01), City: "Varanasi", Country: "India"));
 
-            //UC1
-            EmployeePayrollOperations employeePayrollOperations = new EmployeePayrollOperations();
-            DateTime startDateTime = DateTime.Now;
-            employeePayrollOperations.addEmployeeToPayroll(employeeDetails);
+            //Uc 1 without Thread
+            EnployeePayrollOperations employeePayrollOperations = new EnployeePayrollOperations();
+            DateTime StartDateTime = DateTime.Now;
+            employeePayrollOperations.addEmployeeToPayroll(employees);
             DateTime stopDateTime = DateTime.Now;
-            Console.WriteLine("Duration without thread: " + (stopDateTime - startDateTime));
+            Console.WriteLine("Duration Without thread: " + (stopDateTime - StartDateTime));
+
+            //Uc 2 With Thread
+            DateTime StartDateTimeThread = DateTime.Now;
+            employeePayrollOperations.addEmployeeToPayrollWithThread(employees);
+            DateTime stopDateTimeThread = DateTime.Now;
+            Console.WriteLine("Duration With thread: " + (stopDateTime - StartDateTime));
 
         }
     }
